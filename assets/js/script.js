@@ -9,12 +9,12 @@ var userScore = document.querySelector("#user-score");
 
 //call the last registered user score on refresh
 renderLastRegistered();
+
 //---------------------------------------------------------------------------
 //FUNCTION TO START TIMER
 startButton.addEventListener('click', function(event) {
   var timeLeft = 5;
   event.preventDefault;
-  submitButton.addEventListener('click', clearInterval(timeInterval));
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   var timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
