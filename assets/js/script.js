@@ -6,42 +6,35 @@ var timerEl = document.getElementById('time');
 
 //---------------------------------------------------------------------------
 //FUNCTION TO START TIMER
-startButton.addEventListener('click', function(event) {
-  var timeLeft = 10;
-  event.preventDefault;
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
-    // As long as the `timeLeft` is greater than 1
-    if (timeLeft > 1) {
-      // Set the `textContent` of `timerEl` to show the remaining seconds
-      timerEl.textContent = timeLeft + ' seconds remaining';
-      // Decrement `timeLeft` by 1
-      timeLeft--;
-    } else if (timeLeft === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerEl.textContent = timeLeft + ' second remaining';
-      timeLeft--;
-    } else {
-      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = '';
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
-    }
-  }, 1000);
-});
+// startButton.addEventListener('click', function(event) {
+//   var timeLeft = 10;
+//   event.preventDefault;
+//   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+//   var timeInterval = setInterval(function () {
+//     // As long as the `timeLeft` is greater than 1
+//     if (timeLeft > 1) {
+//       // Set the `textContent` of `timerEl` to show the remaining seconds
+//       timerEl.textContent = timeLeft + ' seconds remaining';
+//       // Decrement `timeLeft` by 1
+//       timeLeft--;
+//     } else if (timeLeft === 1) {
+//       // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+//       timerEl.textContent = timeLeft + ' second remaining';
+//       timeLeft--;
+//     } else {
+//       // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+//       timerEl.textContent = '';
+//       // Use `clearInterval()` to stop the timer
+//       clearInterval(timeInterval);
+//     }
+//   }, 1000);
+// });
 
 //---------------------------------------------------------------------------
 //FUNCTION TO GENERATE QUESTIONS AND ANSWERS
 function buildQuiz(){
   // create variable to store the output
   const output = [];
-
-  output.push(
-    `<div class="slide">
-      <div class="question"> ${currentQuestion.question} </div>
-      <div class="answers"> ${answers.join("")} </div>
-    </div>`
-  );
 
   // for each question
   myQuestions.forEach(
@@ -62,11 +55,11 @@ function buildQuiz(){
           </label>`
         );
       }
-
-      // add this question and its answers to the output
       output.push(
-        `<div class="question"> ${currentQuestion.question} </div>
-        <div class="answers"> ${answers.join('')} </div>`
+        `<div class="slide">
+          <div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join("")} </div>
+        </div>`
       );
     }
   );
@@ -193,7 +186,6 @@ const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
-showSlide(currentSlide);
 
 //first slide display
 showSlide(currentSlide);
