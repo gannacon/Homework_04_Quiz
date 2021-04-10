@@ -5,25 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tip Calculator</title>
+  <title>Java Quiz</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-  <div class="container">
-    <h1>Tip Calculator</h1>
-    <h3>Enter the total price of your meal below</h3>
-    <form id="form">
-      <input type="text" id="total" placeholder="total price of meal" />
-      <input type="text" id="tip-percentage" placeholder="tip percentage" />
-      <button id="submit">Calculate Tip</button>
-    </form>
-    <div class="tip-area">
-      <h2>Tip amount: <span id="tip-amount"></span></h2>
-      <h2>Total: <span id="new-total"></span></h2>
+  <header>
+    <h1>Java Quiz</h1>
+    <div class="countdown">
+      <h2><span id="time"></span></h2>
     </div>
+  </header>
+  <div class="quiz-container">
+    <div id="quiz"></div>
   </div>
-
+  <button id="previous">Previous</button>
+  <button id="next">Next</button>
+  <button id="submit">Submit</button>
+  <div id='results'></div>
+    <!-- <div class = "startpage">
+      <h3>Click the button below to start your quiz!</h3>
+      <button id="start">START</button>
+    </div> -->
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -1,5 +1,50 @@
 body {
-  background-color: #eff5f8
+  background-color: white;
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  padding: 20px;
+
+}
+
+header {
+  display: inline-block;
+  width: 100%;
+  background-color: lightgrey;
+  padding: 20px;
+}
+header h1 {
+  float: left;
+  padding: 10px;
+}
+
+.slide{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.active-slide{
+  opacity: 1;
+  z-index: 2;
+}
+
+.quiz-container{
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+}
+
+.countdown {
+  float: right;
+  padding: 10px;
 }
 
 input {
@@ -19,24 +64,18 @@ button {
   margin: 24px;
   cursor: pointer;
   font-size: 24px;
-  background-color: #247BA0;
+  background-color: BLACK;
   color: white;
 }
 
 .container {
-  display: block;
-  margin: 60px auto;
   text-align: center;
+  color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 60vw;
-  background-color: #f0ead6;
+  background-color: grey;
 }
 
 .card-contents {
   padding: 5px 5px 30px 5px;
-}
-
-.tip-area {
-  padding-bottom: 20px;
 }
