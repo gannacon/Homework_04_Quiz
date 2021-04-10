@@ -175,10 +175,10 @@ var submitButton = document.getElementById('submit');
 //QUIZ QUESTIONS
 const myQuestions = [
   {
-    question: "What is the proper way to call a class in CSS?",
+    question: "How do you call a function?",
     answers: {
-      a: "Use a hashtag",
-      b: "Use period",
+      a: "run.function{};",
+      b: "function();",
       c: "Brushing his teeth!"
     },
     correctAnswer: "b"
