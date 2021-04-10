@@ -60,8 +60,14 @@ input:focus {
 }
 
 button {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 10%;
   padding: 10px;
-  margin: 24px;
   cursor: pointer;
   font-size: 24px;
   background-color: BLACK;

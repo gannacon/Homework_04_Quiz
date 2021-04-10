@@ -4,23 +4,27 @@
 # <BTCMP Homework 4>
 
 ## Description
-This javascript will randomly generate a password for you... But you must remember that there is no such thing as random for computers.
+This is a simple and quick javascript quiz. The user has 5 seconds to answer three questions.
 ## Installation
 You do not need anything special to run this functioning code. 
-Link for deployed repo: https://gannacon.github.io/Homework-03-PasswordGen/
+Link for deployed repo: https://gannacon.github.io/Homework_04_Quiz/
 ## Assets
 Below is a screenshot of the home page.
 
  ![screenshot of my work](./images/screenshot.png)
 
 ## Credits
-I give credit to Byron and Chris who helped me understand HTML and CSS. This code was from scratch but they were a valuable resource when completing this assignment.
+I give credit to the internet to help me create the quiz and the slide show of questions. I then modified the variables and functions to perform to the acceptance criteria.
 
 ## My Task
+At some point in my journey to become a full-stack web developer, I will likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
 
-This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+To help familiarize myself with these tests and allow me to use the skills covered in this unit, this week’s homework invites me to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that I write. It will have a clean, polished, and responsive user interface. 
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+
+If you are the grader of this assignment and get this far in the README... Congratulations! In our grading comments please provide me with the answer to the universe provided in "The Hitchiker's Guide to the Galaxy".
+
 
 
 ## User Story

@@ -1,34 +1,57 @@
 //---------------------------------------------------------------------------
 //DECLARING VARIABLES
 var startButton = document.getElementById('start');
+const nextButton = document.getElementById("next");
 var timerEl = document.getElementById('time');
+var userInitials = document.querySelector("#user-init");
+var userScore = document.querySelector("#user-score");
 
 
+//call the last registered user score on refresh
+renderLastRegistered();
 //---------------------------------------------------------------------------
 //FUNCTION TO START TIMER
-// startButton.addEventListener('click', function(event) {
-//   var timeLeft = 10;
-//   event.preventDefault;
-//   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-//   var timeInterval = setInterval(function () {
-//     // As long as the `timeLeft` is greater than 1
-//     if (timeLeft > 1) {
-//       // Set the `textContent` of `timerEl` to show the remaining seconds
-//       timerEl.textContent = timeLeft + ' seconds remaining';
-//       // Decrement `timeLeft` by 1
-//       timeLeft--;
-//     } else if (timeLeft === 1) {
-//       // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-//       timerEl.textContent = timeLeft + ' second remaining';
-//       timeLeft--;
-//     } else {
-//       // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-//       timerEl.textContent = '';
-//       // Use `clearInterval()` to stop the timer
-//       clearInterval(timeInterval);
-//     }
-//   }, 1000);
-// });
+startButton.addEventListener('click', function(event) {
+  var timeLeft = 5;
+  event.preventDefault;
+  submitButton.addEventListener('click', clearInterval(timeInterval));
+  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (timeLeft > 1) {
+      // Set the `textContent` of `timerEl` to show the remaining seconds
+      timerEl.textContent = timeLeft + ' seconds remaining';
+      // Decrement `timeLeft` by 1
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      timerEl.textContent = timeLeft + ' second remaining';
+      timeLeft--;
+    } else {
+      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+      timerEl.textContent = '';
+      // Use `clearInterval()` to stop the timer
+      clearInterval(timeInterval);
+      alert('Times Up!');
+      showResults();
+    }
+  }, 1000);
+});
+
+//---------------------------------------------------------------------------
+//FUNCTION TO START THE SLIDESHOW OF QUESTIONS
+function homePage(){
+  nextButton.style.display = 'none';
+  submitButton.style.display = 'none';
+  startButton.addEventListener('click', startSlide);
+
+  function startSlide(event){
+    event.preventDefault;
+    startButton.style.display = 'none';
+    nextButton.style.display = 'inline-block';
+    showSlide(currentSlide);
+  }
+}
 
 //---------------------------------------------------------------------------
 //FUNCTION TO GENERATE QUESTIONS AND ANSWERS
@@ -91,20 +114,31 @@ function showResults(){
     if(userAnswer === currentQuestion.correctAnswer){
       // add to the number of correct answers
       numCorrect++;
+    }
 
-      // color the answers green
-      answerContainers[questionNumber].style.color = 'lightgreen';
-    }
-    // if answer is wrong or blank
-    else{
-      // color the answers red
-      answerContainers[questionNumber].style.color = 'red';
-    }
   });
 
   // show number of correct answers out of total
-  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  localStorage.setItem('score', numCorrect);
+  console.log(numCorrect);
+  var person = prompt("Please enter your initials");
+  localStorage.setItem('initials', person);
+  if (person != null) {
+    document.getElementById("initials").innerHTML =
+    `${person} scored ${numCorrect} out of ${myQuestions.length}`;
+  }
 }
+
+function renderLastRegistered() {
+  // TODO: Retrieve the last email and password and render it to the page
+  var initials = localStorage.getItem("initials");
+  var score = localStorage.getItem("score");
+
+  userInitials.textContent = initials;
+  userScore.textContent = score;
+}
+
+
 
 //---------------------------------------------------------------------------
 //FUNCTION TO SHOW SLIDES
@@ -112,12 +146,7 @@ function showSlide(n) {
   slides[currentSlide].classList.remove('active-slide');
   slides[n].classList.add('active-slide');
   currentSlide = n;
-  if(currentSlide === 0){
-    previousButton.style.display = 'none';
-  }
-  else{
-    previousButton.style.display = 'inline-block';
-  }
+
   if(currentSlide === slides.length-1){
     nextButton.style.display = 'none';
     submitButton.style.display = 'inline-block';
@@ -129,14 +158,11 @@ function showSlide(n) {
 }
 
 //---------------------------------------------------------------------------
-//MAKE THE BUTTONS WORK
+//MAKE THE BUTTONS WORK WITH CLICKS OF NEXT AND SUBMIT
 function showNextSlide() {
   showSlide(currentSlide + 1);
 }
 
-function showPreviousSlide() {
-  showSlide(currentSlide - 1);
-}
 
 
 //---------------------------------------------------------------------------
@@ -149,49 +175,47 @@ var submitButton = document.getElementById('submit');
 //QUIZ QUESTIONS
 const myQuestions = [
   {
-    question: "Who invented JavaScript?",
+    question: "What is the proper way to call a class in CSS?",
     answers: {
-      a: "Douglas Crockford",
-      b: "Sheryl Sandberg",
-      c: "Brendan Eich"
+      a: "Use a hashtag",
+      b: "Use period",
+      c: "Brushing his teeth!"
     },
-    correctAnswer: "c"
+    correctAnswer: "b"
   },
   {
-    question: "Which one of these is a JavaScript package manager?",
+    question: "What is used to write to local storage in javascript",
     answers: {
-      a: "Node.js",
-      b: "TypeScript",
-      c: "npm"
+      a: "setItem",
+      b: "getItem",
+      c: "Brushing his teeth.."
     },
-    correctAnswer: "c"
+    correctAnswer: "a"
   },
   {
-    question: "Which tool can you use to ensure code quality?",
+    question: "What is used to prevent the default browser action when a button is clicked?",
     answers: {
-      a: "Angular",
-      b: "jQuery",
-      c: "RequireJS",
-      d: "ESLint"
+      a: "preventAction",
+      b: "stopdefault",
+      c: "preventDefault",
+      d: "brushingHisTeeth"
     },
-    correctAnswer: "d"
+    correctAnswer: "c"
   }
 ];
 
 // display quiz right away
 buildQuiz();
 
+// reloads the page immediately
+homePage();
+
 //Pagination
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
-//first slide display
-showSlide(currentSlide);
 
 //---------------------------------------------------------------------------
 //Event Listeners
 submitButton.addEventListener('click', showResults);
-previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
